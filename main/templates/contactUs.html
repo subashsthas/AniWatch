@@ -1,0 +1,74 @@
+{% extends 'header.html' %}
+{% block title %}<title>Contact Us | AniWatch</title> {% endblock %}
+{% block content %}
+{% load static %}
+	<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="application/x-javascript">
+			addEventListener("load", function() {
+				setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1);
+			}
+		</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<style>
+		body {
+          background-color: #2b2b31;
+          padding: -20px;
+          font-family: 'Ubuntu', sans-serif;
+        }
+		::placeholder {
+          color: red;
+        }
+	</style>
+
+	<div class="container">
+		<h1>Contact Form</h1>
+		<div class="left-w3">
+			<h2 style="color:orange;">Contact us</h2>
+			<form  method="POST">
+				{% csrf_token %}
+				<div class="agile1">
+					<h3>Name</h3>
+					<input type="text" name="name" class="name" value="{{user.first_name | title}} {{user.last_name | title}} " style="background-color:silver" readonly>
+				</div>
+				<div class="agile1">
+					<h3>Email</h3>
+					<input type="text" name="email" class="email" value="{{ user.email }}" style="background-color:silver" readonly>
+				</div>
+				<div class="agile1">
+					<h3>Message</h3>
+					<textarea  name="message" placeholder="Type your Message Here" required></textarea>
+				</div>
+                <button type="submit" class="btn btn-outline-warning">Send Message</button>
+				{% for message in messages %}
+					<h4 style="color:red; background-color: whitesmoke;">{{message}}</h4>
+				{% endfor %}
+			</form>
+		</div>
+		<div class="right-w3ls">
+			<h3 class="w3ls" style="color:orange;">Our Location</h3>
+			<div class="agile1">
+				<h3>Reach Us</h3>
+				<div class="map">
+					<iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3862.288829928707!2d85.3620752886254!3d27.774054509688114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1603003881907!5m2!1sen!2snp" width="600" height="450" frameborder="0" style="border:0;border-radius:10px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+				</div>
+			</div>
+			<h3 class="w3ls" style="color:orange;">Stay In Touch</h3>
+			<div class="agile1">
+				<h3>Social Icons</h3>
+				<div class="socialicons w3">
+					<ul>
+						<li><a class="facebook" href="https://www.facebook.com/2ub42h/"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+{% endblock %}

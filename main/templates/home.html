@@ -1,0 +1,202 @@
+{% extends 'header.html' %}
+{% block nav-home%}
+    <a class="nav-link" href="/"><b style="color:white; ">Home</b></a>
+{%endblock %}
+{% load static %}
+{% block title %}<title>Aniwatch</title>{% endblock %}
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+<style>
+	* {
+	  box-sizing: border-box;
+	}
+    .banner {
+        background: #a770ef;
+        background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+        background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+    }
+	ul {
+		list-style-type: none;
+	}
+	a{
+		text-decoration:none;
+	}
+	body {
+	  background-color: #2b2b31;
+	  padding: 20px;
+	  font-family: 'Ubuntu', sans-serif;
+	}
+	.clear{
+		clear:both;
+	}
+	.gallery{
+	   margin-right: 60px;
+	   float: left;
+	   width: 16vw;
+	   height: 24vw;
+	   font-size: 1vw;
+	   text-align:center;
+	}
+	.gallery img{
+		width: 18vw;
+		height:20vw;
+	}
+
+	/* Center website */
+	h1 {
+	  font-size: 50px;
+	  word-break: break-all;
+	}
+	.btnscontroller{
+		background-color: #1d1c1f;
+		padding-top:1vw;
+		padding-bottom:0.5vw;
+		padding-left:0.5vw;
+	}
+	.btnscontroller button.active{
+		background: linear-gradient(90deg, #566E3D 0%, #566E3D 100%);
+	}
+	.btnscontroller button{
+		color: white;
+	}
+	.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+	    color:#fff;
+	}
+    .container-fluid div.gallery {
+      margin: 5px;
+      border: 1px solid #ccc;
+      float: left;
+      width: 20vw;
+      height:34vw;
+    }
+    
+    .container-fluid div.gallery:hover {
+      border: 1px solid #777;
+    }
+    
+    .container-fluid div.gallery img {
+      width: 19vw;
+      height: 20vw;
+    }
+    
+    .container-fluid div.desc {
+      padding: 5px;
+      color:white;
+      text-align: center;
+    }
+</style>
+<!--recommendation area-->
+<div class="container">
+    {% if user.is_authenticated %}
+    <h3 style="color:white;">Recommendation</h3>
+        {% if reco is not None%}
+            {% for video in reco %}
+                <div class="popular">
+                    <div class="column">
+                        <div class="gallery">
+                            <a href="/videos/{{video.title}}/{{video.title_id}}"><img src="/media/{{video.title.thumbnail}}"
+                                                                              alt="Movies"></a>
+                            <br>
+                            <a href="/videos/{{video.title}}/{{video.title_id}}" style=" color:white; font-weight: bold;">{{video.title}} </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="clear"></div>
+        </div>
+        {% else %}
+            <div class="container">
+                <div class="popular">
+                    <p class="text-warning">You Have no data in model to recommend. Please Start watching anime you like and
+                        get
+                        recommendation based on it.</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        {% endif %}
+    {% endif %}
+<!--recently updated area-->
+<div class="container">
+    <hr style="background: linear-gradient(to right, #ff55a5, #ff5860); height: 0.12vw; box-shadow: 0 0 20px 0 rgba(255,88,96,0.5)">
+    <h3 style="color:white;">Recently Updated</h3>
+    <nav class="btnscontroller">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-recent-tab" data-bs-toggle="tab" data-bs-target="#nav-recent"
+                    type="button" role="tab" aria-controls="nav-recent" aria-selected="true">All
+            </button>
+            <button class="nav-link" id="nav-trend-tab" data-bs-toggle="tab" data-bs-target="#nav-trend"
+                    type="button" role="tab" aria-controls="nav-trend" aria-selected="false">Trending
+            </button>
+        </div>
+    </nav>
+    <br>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-recent" role="tabpanel" aria-labelledby="nav-recent-tab">
+            {% for video in result %}
+            <div class="column">
+                <div class="gallery">
+                    <a href="/videos/{{video.title}}/{{video.title_id}}"><img src="/media/{{video.title.thumbnail}}"
+                                                                              alt="Movies"></a>
+                    <br>
+                    <a href="/videos/{{video.title}}/{{video.title_id}}" style=" color:white; font-weight: bold;">{{video.title}} </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="clear"></div>
+        <div class="tab-pane fade" id="nav-trend" role="tabpanel" aria-labelledby="nav-trend-tab">
+            {% for video in trend %}
+            <div class="column">
+                <div class="gallery">
+                    <a href="/videos/{{video.title}}/{{video.title_id}}"><img src="/media/{{video.title.thumbnail}}"
+                                                                              alt="Movies"></a>
+                    <br>
+                    <a href="/videos/{{video.title}}/{{video.title_id}}" style=" color:white; font-weight: bold;">{{video.title}} </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--popular area-->
+<div class="container">
+    <hr style="background: linear-gradient(to right, #ff55a5, #ff5860); height: 0.12vw; box-shadow: 0 0 20px 0 rgba(255,88,96,0.5)">
+    <h3 style="color:white;">Popular Video</h3>
+    <div class="popular">
+    {% for video in popular %}
+    <div class="column">
+        <div class="gallery">
+            <a href="/videos/{{video.title}}/{{video.title_id}}"><img src="/media/{{video.title.thumbnail}}"
+                                                              alt="Movies"></a>
+            <br>
+            <a href="/videos/{{video.title}}/{{video.title_id}}" style=" color:white; font-weight: bold;">{{video.title}} </a>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    <div class="clear"></div>
+</div>
+<!--releasing soon area-->
+<div class="container-fluid" style="padding-left: 2vw;padding-right: 8vw;">
+    <div class="row">
+        <hr style="background: linear-gradient(to right, #ff55a5, #ff5860); height: 0.12vw; box-shadow: 0 0 20px 0 rgba(255,88,96,0.5)">
+        <h3 style="color:white;">Releasing soon</h3>
+        {% for video in releasing %}
+        <div class="gallery">
+            <img src="/media/{{video.thumbnail}}" alt="image" class="img">
+            <br>
+            <b  style="color:white;">{{video.title}}</b>
+            <div class="desc"><p>{{video.description| slice:":200"}}...........</p></div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+<hr>
+<div class="clear"></div>
+{% endblock %}

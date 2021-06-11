@@ -1,0 +1,150 @@
+<html>
+<head lang="en">
+    {% load static %}
+    <!-- logo -->
+    <link rel="icon" type="image/ico" href="{% static 'images/logo2.jpg' %}"/>
+    <link rel="stylesheet" href="{% static 'css/header/ionicons.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/bb6144f113.js" crossorigin="anonymous"></script>
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        .btn-outline-warning:hover{background-color:#FFD700}
+        body {
+          margin: 0;
+          font-family: 'Ubuntu', sans-serif;
+          font-weight: normal;
+          background-color: #2b2b31;
+        }
+
+        .clear{
+            clear:both;
+        }
+        .sidebar {
+          width: 10vw;
+          background-color:#585858;
+          position: fixed;
+          height: 100%;
+        }
+        .control-label{
+            font-size: 1.3vw;
+        }
+        .form-control::placeholder{font-size:1.3vw;}
+        .form-control{
+            width3.5vw;
+        }
+        .sidebar a {
+          display: block;
+          color: black;
+          padding: 16px;
+          text-decoration: none;
+          font-size: 1.2vw;
+        }
+        
+        .sidebar a.active {
+          background-color: orange;
+          color: white;
+        }
+        
+        .sidebar a:hover:not(.active) {
+          background-color: #555;
+          color: white;
+        }
+        
+        div.content {
+          margin-left: 10vw;
+          padding: 1px 16px;
+        }
+        
+        @media screen and (max-width: 700px) {
+          .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+          }
+          .sidebar a {float: left;}
+          div.content {margin-left: 0;}
+        }
+        
+        @media screen and (max-width: 400px) {
+          .sidebar a {
+            text-align: center;
+            float: none;
+          }
+        }
+        @media screen and (max-width: 700px){
+            .sidebar a{
+                color:white;
+                background:#566E3D;
+                width:100%;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="/studio"><img src="{% static 'images/logo1.png' %}" alt="logo" height="50vw"></a>
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            
+            </ul>
+            <ul class="navbar-nav ml-auto p-3 col-1">
+                <li class="nav-item dropdown">
+                    {% block userbutton %}
+                    <button class="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{user.username | title}}
+                    </button>
+                    {% endblock %}
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/profile">Profile</a>
+                        <a class="dropdown-item" href="/">AniWatch</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout" onclick="return confirm('Are you sure you want to logout??')">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div style="margin-top:90px;"></div>
+    <div class="sidebar">
+        {% block A_dash %}<a href="/studio">Dashboard</a> {% endblock %}
+        {% block A_user %}<a href="/studio/user">Users</a> {% endblock %}
+        {% block A_genre %}<a href="/studio/genre">Genre</a> {% endblock %}
+        {% block A_title %}<a href="/studio/title">Title</a> {% endblock %}
+        {% block A_movies %}<a href="/studio/movies">Movies</a> {% endblock %}
+        {% block A_series %}<a href="/studio/series">Series</a> {% endblock %}
+        {% block A_contact %}<a href="/studio/contact">Customer Support</a> {% endblock %}
+    </div>
+
+<div class="content">
+{% block content %}
+{% endblock %}
+</div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</html>

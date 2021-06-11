@@ -1,0 +1,85 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block title %} <title>{{query | slice:":10" }} | AniWatch Search</title> {% endblock %}
+{% block content %}
+<style>
+	body {
+	  background-color: #2b2b31;
+	  padding: 20px;
+	  font-family: 'Ubuntu', sans-serif;
+	}
+	/* Center website */
+	h1 {
+	  font-size: 50px;
+	  word-break: break-all;
+	}
+
+	.row {
+	  margin: 10px -16px;
+	}
+
+	/* Clear floats after rows */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+
+	/* Content */
+	.content {
+	  padding: 0.5vw;
+	  color: white;
+	  text-align: center;
+	  width: 18vw;
+	}
+
+	/* The "show" class is added to the filtered elements */
+	.show {
+	  display: block;
+	}
+
+
+</style>
+<div class="container my-4" style="color:white;">
+    <h1 style="color:orange; font-size:2.2vw">Search Result:</h1>
+<!--	print if there is no any search result-->
+	{% if series|length < 1 and movies|length < 1 %}
+	<h4><b style="color: yellow;">No Search Result Found</b></h4>
+	Your search query: <b>"{{query}}"</b> did not match any files. <br>
+	Suggestions: <br>
+	<ul>
+		<li>Make sure all the keywords are spelled correctly.</li>
+		<li>Try Different Keywords.</li>
+		<li>Try more general words.</li>
+		<li>Try fewer Keywords.</li>
+	</ul>
+	{% endif %}
+	<div>
+		<div class="row">
+			<!--movies area-->
+			{% for video in movies %}
+				<div class="column Movies">
+					<div class="content">
+						<a href="/videos/{{video.title}}/{{video.title_id}}"><img
+                                src="/media/{{video.title.thumbnail}}" alt="Recommendation"
+                                style="width: 16vw; height:20vw;"></a>
+						<br><b style="font-size: 1.2vw; ">{{video.title}}</b>
+					</div>
+				</div>
+			{% endfor %}
+			<!--series area-->
+			{% for video in series %}
+				<div class="column Series">
+					<div class="content">
+						<a href="/videos/{{video.title}}/{{video.title_id}}"><img
+                                src="/media/{{video.title.thumbnail}}" alt="Series"
+                                style="width:16vw; height: 20vw;"></a>
+						<br><b style="font-size: 1.2vw; ">{{video.title}}</b>
+					</div>
+				</div>
+			{% endfor %}
+			<!-- END GRID -->
+		</div>
+	</div>
+</div>
+{% endblock %}

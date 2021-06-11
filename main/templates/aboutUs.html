@@ -1,0 +1,120 @@
+{% extends 'header.html' %}
+{% block title %}<title>About Us | Aniwatch</title>{% endblock %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+              integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+          background-color: #2b2b31;
+          padding: -20px;
+          font-family: 'Ubuntu', sans-serif;
+        }
+        .bg-white{
+            background-color:#A9A9A9;
+        }
+        .social-link {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            border-radius: 50%;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        .social-link:hover,
+        .social-link:focus {
+            background: #ddd;
+            text-decoration: none;
+            color: #555;
+        }
+        .small{color:white;}
+    </style>
+</head>
+
+<body>
+    <div class="bg py-5">
+        <div class="container py-5">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
+                    <h2 class="font-weight-light text-light">Who we are?</h2>
+                    <p class="font-italic text-muted mb-4">Just a Normal student who wants to change anime
+                        watching experience with all other anime lovers.</p>
+                </div>
+                <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2">
+                    <img src="https://www.lifewire.com/thmb/1Af2DFGiDRwNoMxdYQFbKc4jFEc=/1920x1080/filters:fill(auto,1)/funimation-now-what-it-is-and-how-to-watch-anime-on-it-cf5be0c676404d3cb3811b72688b1f78.jpg" alt="" class="img-fluid mb-4 mb-lg-0">
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-5 px-5 mx-auto">
+                    <img src="https://www.phonereporters.com/wp-content/uploads/2020/05/Watch-Anime-Movies-Online-Free.png" alt="" class="img-fluid mb-4 mb-lg-0">
+                </div>
+                <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
+                    <h2 class="font-weight-light text-light">We are different than the rest</h2>
+                    <p class="font-italic text-muted mb-4">Use the site and you will forget that anime needs payment to
+                        watch latest content</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-dark py-5">
+        <div class="container py-5">
+            <div class="row mb-4">
+                <div class="col-lg-5">
+                    <h2 class="display-4 font-weight-light text-light">Our team</h2>
+                    <p class="font-italic text-muted">Management team of our website.</p>
+                </div>
+            </div>
+            <div class="row text-center">
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-secondary rounded shadow-sm py-5 px-4">
+                        <img src="{% static 'images/founder.jpg' %}" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Subash Shrestha</h5><span class="small text-uppercase">Founder</span>
+                        <br>
+                        <span class="small text-uppercase"> Kathmandu Nepal</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="https://www.facebook.com/2ub42h/" class="social-link"><i class="fa fa-facebook-f" style="font-size:20px;color:blue"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.instagram.com/subash_sthas/" class="social-link"><i class="fa fa-instagram" style="font-size:20px;color:red"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-secondary rounded shadow-sm py-5 px-4"><img src="{% static 'images/supervisor.jpg' %}"
+                                                                       alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Prakash Dahal</h5><span class="small text-uppercase">Supervisor</span>
+                        <br>
+                        <span class="small text-uppercase"> Kathmandu Nepal</span>
+                            <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="https://www.facebook.com/prakash2053" class="social-link"><i class="fa fa-facebook-f" style="font-size:20px;color:blue"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-secondary rounded shadow-sm py-5 px-4"><img src="{% static 'images/cofounder.png' %}"
+                                                                       alt="" width="195" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Herald College</h5><span class="small text-uppercase">CO - Founder</span>
+                        <br>
+                        <span class="small text-uppercase"> Kathmandu Nepal</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="https://www.facebook.com/heraldcollegektm/" class="social-link"><i class="fa fa-facebook-f" style="font-size:20px;color:blue"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html lang="zxx">
+	{% load static %}
+	<head>
+		{% block title %}<title>Login |  AniWatch</title> {% endblock %}
+
+		<!-- Meta tag Keywords -->
+		<link rel="icon" type="image/ico" href="{% static 'images/logo2.jpg' %}"/>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+		<script>
+			addEventListener("load", function () {
+				setTimeout(hideURLbar, 0);
+			}, false);
+
+			function hideURLbar() {
+				window.scrollTo(0, 1);
+			}
+		</script>
+		<!-- Meta tag Keywords -->
+		<!-- css files -->
+		<link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css" media="all" />
+		<!-- Style-CSS -->
+		<link rel="stylesheet" href="{% static 'css/loginFont.css' %}">
+		<!-- Font-Awesome-Icons-CSS -->
+		<!-- //css files -->
+		<!-- web-fonts -->
+		<link href="//fonts.googleapis.com/css?family=Reem+Kufi&amp;subset=arabic" rel="stylesheet">
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+		<!-- //web-fonts -->
+		<style>
+			body {
+				background-size: cover;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				-ms-background-size: cover;
+				background-attachment: fixed;
+				background-position: center;
+				font-family: 'Ubuntu', sans-serif;
+                font-weight: normal;
+                background-color: #2b2b31;
+				font-size: 100%;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<!-- title -->
+		<h1>
+			<a href="/"><span>A</span>ni<span>W</span>atch</a>
+		</h1>
+		<!-- //title -->
+		<!-- content -->
+		<div class="sub-main-w3">
+            {% if otp %}
+            <form  method="POST">
+				{% csrf_token %}
+				<div class="form-style-agile">
+					{% for message in messages %}
+						<h4 style="color:red; background-color: whitesmoke;">{{message}}</h4>
+					{% endfor %}
+                    <input name="usr" type="hidden" value="{{usr.username}}">
+					<label>
+						VERIFY YOUR OTP
+					</label>
+					<input placeholder="Enter Your OTP Here" name="otp" type="text" aria-label="OTP" required>
+				</div>
+				
+				<input type="submit" value="Log In">
+				<hr>
+            </form>
+            {% else %}
+			<form  method="POST">
+				{% csrf_token %}
+				<div class="form-style-agile">
+					{% for message in messages %}
+						<h4 style="color:red; background-color: whitesmoke;">{{message}}</h4>
+					{% endfor %}
+					<label>
+						Username
+						<i class="fas fa-user"></i>
+					</label>
+					<input placeholder="Username" name="username" type="text" required>
+				</div>
+				<div class="form-style-agile">
+					<label>
+						Password
+						<i class="fas fa-unlock-alt"></i>
+					</label>
+					<input placeholder="Password" name="password" type="password" id="password" required>
+				</div>
+				<!-- checkbox -->
+				<div class="wthree-text">
+					<ul>
+						<li>
+							<label class="anim">
+								<input type="checkbox" class="checkbox" id="check" onclick="myFunction()">
+								<span>Show Password</span>
+							</label>
+						</li>
+						<li>
+							<a href="reset_password"><u>Forgot Password?</u></a>
+						</li>
+					</ul>
+				</div>
+				<input type="submit" value="Log In">
+
+				<div class="wthree-text" >
+					<ul>
+						<li>
+							<p style="color:yellow; ">Don't Have Account?</p> <br>
+							<a href="register"><u>Register Here</u></a>
+						</li>
+					</ul>
+				</div>
+				{% load socialaccount %}
+				<!-- social icons -->
+				<div class="footer-social">
+					<h2>Or</h2>
+					<ul>
+						<li>
+							<a href="{% provider_login_url 'google' method='js_sdk' %}">
+								<i class="fab fa-google-plus-g icon_g_plus"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+            </form>
+		</div>
+        {% endif %}
+		<!-- //content -->
+
+		<!-- copyright -->
+		<div class="footer">
+			<p>&copy; 2020 AniWatch . All rights reserved</p>
+		</div>
+		<!-- //copyright -->
+	</body>
+    <script>
+        <!--password to be visible when the box is checked-->
+        function myFunction() {
+            var x = document.getElementById("password");
+            if (check.checked) {
+                x.type = 'text';
+            } else {
+                x.type = 'password';
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,82 @@
+{% extends "header.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<title>Subscribe to our Newsletter</title>
+<style>
+    body {
+        background-color: #2b2b31;
+        padding: -20px;
+        font-family: 'Ubuntu', sans-serif;
+    }
+     .bg-white {
+         background-color: #A8A8A8 !important
+     }
+
+     .subscription.bg-white .subscription-wrapper {
+         background: #BEBEBE
+     }
+    
+     .subscription-wrapper {
+         border-radius: 0% 5% 10% 3%/10% 20% 0% 17%;
+         -webkit-transform: perspective(1800px) rotateY(20deg) skewY(1deg) translateX(50px);
+         transform: perspective(1800px) rotateY(20deg) skewY(1deg) translateX(50px);
+         padding: 70px 50px;
+         z-index: 1;
+         width: 100%;
+         background-color: white;
+     }
+    
+     .subscription-wrapper {
+         box-shadow: 0px 15px 39px 0px rgba(8, 18, 109, 0.1) !important
+     }
+     .subscription-content {
+         -webkit-transform: skewY(-1deg);
+         transform: skewY(-1deg)
+     }
+     .flex-fill {
+         -ms-flex: 1 1 auto !important;
+         flex: 1 1 auto !important
+     }
+    
+     .clear{clear:both;}
+
+</style>
+
+<br>
+<br>
+<br>
+<br>
+<br><br><br>
+<section class="subscription ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="subscription-wrapper bg-white">
+                    <div class="d-flex subscription-content justify-content-between align-items-center flex-column flex-md-row text-center text-md-left">
+                        <h3 class="flex-fill">Subscribe to our newsletter</h3> <br>
+                        <form method="POST" class="flex-fill">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <hr>
+                            <button type="submit" class="btn btn-outline-warning">Subscribe
+                                Now</button>
+                            {% for message in messages %}
+                                <h4 style="color:red;">{{message}}</h4>
+                            {% endfor %}
+                        </form>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+<div class="clear"></div>
+<br>
+<br>
+<br>
+<br>
+<br><br><br>
+{% endblock %}

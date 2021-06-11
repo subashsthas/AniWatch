@@ -1,0 +1,386 @@
+<html>
+<head lang="en">
+    {% load static %}
+    <!-- logo -->
+    <link rel="icon" type="image/ico" href="{% static 'images/logo2.jpg' %}"/>
+    <link rel="stylesheet" href="{% static 'css/header/ionicons.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/bb6144f113.js" crossorigin="anonymous"></script>
+
+    {% block title %}{% endblock %}
+    <style>
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: normal;
+            -webkit-font-smoothing: antialiased;
+        }
+        .navbar{
+            z-index:2;
+        }
+        footer p, footer a{
+            font-size:1.2vw;
+        }
+        #part1 {
+            width: 100%;
+            height: 280px;
+            background-color: #292929;
+        }
+        
+        #part2 {
+            width: 100%;
+            height: 50px;
+            background-color: black;
+            position: relative;
+            top: -15px
+        }
+        
+        #companyinfo {
+            width: 14%;
+            height: 280px;
+            position: relative;
+            left: 8%;
+            top: 30px
+        }
+        
+        #sitelink {
+            font-size: 1.4vw;
+            color: orange;
+        }
+        .btn-outline-warning:hover{background-color:#FFD700 !important}
+        #sitelink:hover {
+            color: #FFD700;
+        }
+        
+        #title {
+            color: gray;
+            position: relative;
+            top: 0px;
+            font-size: 1.2vw;
+        }
+        
+        #detail {
+            color: #aaa7a7;
+            font-size: 1.2vw;
+        }
+        
+        #explore {
+            width: 14%;
+            height: 280px;
+            position: relative;
+            top: -235px;
+            left: 29%
+        }
+        
+        #txt1,
+        #txt2,
+        #txt3,
+        #txt4,
+        #txt5 {
+            color: white;
+            font-size: 1.4vw;
+        }
+        
+        .link {
+            display: flex;
+            width: 7vw;
+            height: 2.3vw;
+            color: #aaa7a7;
+            background-color: transparent;
+            border-top: 0.1vw solid white;
+            position: relative;
+            top: -10px
+        }
+        
+        .link:hover,
+        .link1:hover {
+            color: #FFD700;
+        }
+        
+        #visit {
+            width: 14vw;
+            height: 280px;
+            position: relative;
+            top: -515px;
+            left: 42%
+        }
+        
+        .text {
+            color: #aaa7a7;
+            font-size: 1vw;
+            margin-top: -10px
+        }
+        
+        #legal {
+            width: 9vw;
+            height: 280px;
+            position: relative;
+            top: -800px;
+            left: 59.5%
+        }
+        
+        .link1 {
+            display: flex;
+            width: 9vw;
+            color: #aaa7a7;
+            background-color: transparent;
+            border-top: 2px solid white;
+            position: relative;
+            top: -10px;
+            margin-top: 7px
+        }
+        
+        #subscribe {
+            position: relative;
+            top: -1080px;
+            left: 78%;
+            width: 14%;
+            height: 280px
+        }
+        
+        #email {
+            color: white;
+            position: relative;
+            top: -20px
+        }
+        #txt5 {
+            position: relative;
+            top: 0px
+        }
+        
+
+        #txt6 {
+            color: white;
+            position: relative;
+            top: 13px;
+            left: 8%;
+            width: 80%;
+            color: #aaa7a7
+        }
+        
+        .material-icons {
+            position: relative;
+            top: 3px
+        }
+        
+        @media only screen and (max-width:1000px) {
+            #companyinfo {
+                width: 20%
+            }
+        
+            #sitelink {
+                font-size: 30px
+            }
+        
+            #txt5,
+            #txt4 {
+                font-size: 17px
+            }
+        
+            #txt5{
+                position: relative;
+                top: -5px
+            }
+        }
+        
+        @media only screen and (max-width:850px) {
+            #companyinfo {
+                position: relative;
+                left: 3%
+            }
+        
+            #txt6 {
+                position: relative;
+                left: 3%
+            }
+        
+            #txt1,
+            #txt2,
+            #txt3,
+            #txt4,
+            #txt5 {
+                font-size: 15px
+            }
+        
+            #explore {
+                position: relative;
+                top: -240px;
+                left: 26%
+            }
+        
+            #sitelink {
+                font-size: 25px
+            }
+        
+            #detail {
+                font-size: 13px
+            }
+        
+            .link {
+                width: 60px
+            }
+        
+            #visit {
+                position: relative;
+                top: -520px;
+                left: 37%
+            }
+        
+            .text {
+                font-size: 1vw;
+            }
+        
+            #legal {
+                position: relative;
+                top: -800px;
+                left: 54%
+            }
+        
+            #subscribe {
+                position: relative;
+                top: -1080px;
+                left: 76%;
+                width: 20%
+            }
+        
+            #txt5{
+                position: relative;
+                left: -110%;
+                top: px
+            }
+        
+            #email,
+            .btn {
+                position: relative;
+                top: 0px
+            }
+        
+            #part1 {
+                height: 250px
+            }
+        }
+    
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" id="snav">
+        <a class="navbar-brand" href="/"><img src="{% static 'images/logo1.png' %}" alt="logo" height="50vw"></a>
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    {% block nav-home %}
+                    <a class="nav-link" href="/">Home</a>
+                    {% endblock %}
+                </li>
+                <li class="nav-item">
+                    {% block nav-movies %}
+                    <a class="nav-link" href="/movies">Movies</a>
+                    {% endblock %}
+                </li>
+                <li class="nav-item">
+                    {% block nav-series %}
+                    <a class="nav-link" href="/series">Series</a>
+                    {% endblock %}
+                </li>
+                
+            </ul>
+            <form class="form-inline" action="/search">
+                <input class="form-control w-80 mr-sm-2" type="search" placeholder="What do you want to watch?"
+                       aria-label="Search" name="query" id="query">
+                <button class="btn my-2 my-sm-0"
+                        type="submit"
+                        style="color:orange;"><i class="fas fa-search"></i></button>
+            </form>
+            <ul class="navbar-nav ml-auto p-2">
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <button class="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{user.username | title}}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/profile">Profile</a>
+                        {% if request.user.is_staff %}
+                            <a class="dropdown-item" href="/studio">Admin Panel</a>
+                        {% endif %}
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout"
+                           onclick="return confirm('Are you sure you want to logout??')">Logout</a>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item dropdown">
+                    <button class="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Namaste
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/login">Login</a>
+                        <a class="dropdown-item" href="/register">Sign Up</a>
+                    </div>
+                </li>
+                {% endif %}
+            
+            </ul>
+        </div>
+    </nav>
+</header>
+<div style="margin-top:100px;"></div>
+{% block content %}
+{% endblock %}
+<footer>
+    <div id="part1">
+        <div id="companyinfo"><a id="sitelink" href="/" style="font-size:1.3vw;">AniWatch</a>
+            <p id="title" style="font-size:1.2vw;">Watch Anime Forever</p>
+            <p id="detail" style="font-size:1.2vw;">Providing you Anime for Lifetime </p>
+        </div>
+        <div id="explore">
+            <p id="txt1" style="font-size:1.2vw;">Explore</p>
+            <a class="link" href="/about">About Us</a>
+            <a class="link" href="/contact">Contact Us</a>
+        </div>
+        <div id="visit">
+            <p id="txt2" style="font-size:1.2vw;">Visit</p>
+            <p class="text">Budhanilkantha-2 </p>
+            <p class="text">Kathmandu</p>
+            <p class="text">Nepal</p>
+            <p class="text">Phone: (+977) 9860677542 </p>
+        </div>
+        <div id="legal">
+            <p id="txt3" style="font-size:1.2vw;">Legal</p>
+            <a class="link1" href="/terms">Terms</a>
+            <a class="link1" href="/privacy">Private Policy</a>
+        </div>
+        <div id="subscribe">
+            <p id="txt4" style="font-size:1.2vw;">Newsletter</p>
+            <a class="link" href="/newsletter/subscribe">Subscribe</a>
+            <a class="link" href="/newsletter/unsubscribe">Unsubscribe</a>
+        </div>
+    </div>
+    <div id="part2">
+        <p id="txt6">Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+            AniWatch All rights reserved.
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</html>

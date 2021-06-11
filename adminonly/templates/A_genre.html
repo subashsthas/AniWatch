@@ -1,0 +1,149 @@
+{% extends 'adminHeader.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Genre Management | AniWatch Studio{% endblock %}
+{% block A_genre %}<a class="active" href="/studio">Genre</a> {% endblock %}
+{% block content %}
+
+<style>
+    .overlay-content label{
+        color:white;
+    }
+    .overlay {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1031;
+      top: 0;
+      left: 0;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0, 0.9);
+      overflow-x: hidden;
+      transition: 0.5s;
+      overscroll-behavior: contain;
+    }
+    .errorlist li{
+        color:red;
+    }
+    form p{
+        color:gold;
+    }
+    
+    .overlay-content {
+      position: relative;
+      top: 10%;
+      width: 100%;
+      margin-top: 30px;
+      margin-left:30vw;
+    }
+    .form-control{
+        width:25vw;
+    }
+    .help-block{
+        display:none;
+    }
+    .checkboxinput{
+        height: 2vw;
+        width:2vw;
+    }
+    .overlay-content{
+        width: 35%;
+        border-radius:25px;
+        padding-left:5vw;
+        padding-bottom:5vw;
+        padding-top:2vw;
+        background-color:#787878;
+    }
+    
+    .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+    
+    .overlay a:hover, .overlay a:focus {
+      color: #f1f1f1;
+    }
+    
+    .overlay .closebtn {
+      position: absolute;
+      top: 20px;
+      right: 45px;
+      font-size: 60px;
+    }
+    
+    @media screen and (max-height: 450px) {
+      .overlay a {font-size: 20px}
+      .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+      }
+    }
+    table th,table td{font-size: 1.2vw;}
+</style>
+<div class="clear"></div>
+
+<h1 style="color:white;font-size:2vw; float:left;">All Genre</h1>
+
+<div class="back">
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <h1 style="color:orange; font-size:2vw;">Add Genre</h1>
+            <form enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                {{ genreform|crispy }}
+                <br>
+                <input type="submit" value="save" name="addgenre" class="btn btn-outline-warning"
+                       style="align:center;">
+            </form>
+        </div>
+    </div>
+</div>
+<button class="btn btn-outline-warning" onclick="openNav()" style="float:right; font-size: 1.2vw;">Add Genre</button>
+<div class="clear"></div>
+{% for message in messages %}
+    <h4 style="color:red;">{{message}}</h4>
+{% endfor %}
+<table class="table table-striped table-light">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Function</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for genre in genre %}
+        <tr>
+            <td>{{genre.id}}</td>
+            <td>{{genre.genre}}</td>
+            <td>
+                <form method="POST" action="{% url 'adminonly:delete_genre' genre.pk %}">
+                    {% csrf_token %}
+                <button type="submit"
+                        class="btn btn-sm" style="color:#DC143C" title="Delete genre"><i class="far fa-trash-alt fa-2x"
+                                                          onclick="return confirm('Are you sure you want to Delete?')"></i></button>
+                </form>
+		    </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script>
+    function openNav() {
+      document.getElementById("myNav").style.width = "100%";
+      document.documentElement.style.overflow = 'hidden';
+      document.body.scroll = "no";
+    }
+    
+    function closeNav() {
+      document.getElementById("myNav").style.width = "0%";
+      document.documentElement.style.overflow = 'visible';
+      document.body.scroll = "yes";
+    }
+</script>
+{% endblock %}

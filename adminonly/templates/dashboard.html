@@ -1,0 +1,33 @@
+{% extends 'adminHeader.html' %}
+{% block title %}Admin Dashboard | AniWatch Studio{% endblock %}
+{% block A_dash %}<a class="active" href="/studio">Dashboard</a> {% endblock %}
+{% block content %}
+<div class="clear"></div>
+
+
+<div style="height:40vw; width:100%; align:center;">
+    <h1 style="color:#E0E0E0;font-size:2vw; margin-left:20%; margin-top:2%;">Welcome to
+        Dashboard {{user.username|title}}</h1>
+    <div
+            style="height:6vw; width:10vw; border-style:solid; border-color:#E0E0E0; margin-left:2%; margin-top:5%; float:left; text-align:center;">
+        <h5 style="color:#E0E0E0;font-size:1.2vw;">Total User</h5>
+        <p style="color:#E8E8E8; font-size:1.2vw;">{{usercount}}</p>
+    </div>
+    <div
+            style="height:6vw; width:10vw; border-style:solid; border-color:#E0E0E0; margin-left:2%; margin-top:5%; float:left; text-align:center;">
+        <h5 style="color:#E0E0E0; font-size:1.2vw;">Total Series</h5>
+        <p style="color:#E8E8E8; font-size:1.2vw;">{{seriescount}}</p>
+    </div>
+    <div
+            style="height:6vw; width:10vw; border-style:solid; border-color:#E0E0E0; margin-left:2%; margin-top:5%; float:left; text-align:center;">
+        <h5 style="color:#E0E0E0;font-size:1.2vw;">Total Movies</h5>
+        <p style="color:#E8E8E8; font-size:1.2vw;">{{moviescount}}</p>
+    </div>
+    <div
+            style="height:6vw; width:10vw; border-style:solid; border-color:#E0E0E0; margin-left:2%; margin-top:5%; float:left; text-align:center;">
+        <h5 style="color:#E0E0E0; font-size:1.2vw;">Total Messages</h5>
+        <p style="color:#E8E8E8; font-size:1.2vw;">{{messagecount}}</p>
+    </div>
+
+</div>
+{% endblock %}
